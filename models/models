@@ -1,0 +1,26 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  is_admin BOOLEAN DEFAULT FALSE,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  gmail TEXT NOT NULL,
+  password TEXT NOT NULL,
+  photo TEXT DEFAULT NULL
+);
+
+
+
+CREATE TABLE properties (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  address TEXT NOT NULL, 
+  description TEXT DEFAULT NULL,
+  type_property TEXT DEFAULT 'rent',
+  category TEXT DEFAULT 'house',
+  location TEXT NOT NULL, 
+  image TEXT NOT NULL,
+  availability BOOLEAN DEFAULT true,
+  room INTEGER NOT NULL,
+  price DOUBLE PRECISION NOT NULL
+);
+
