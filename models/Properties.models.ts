@@ -1,8 +1,8 @@
 import { Sequelize, Model, DataTypes } from "sequelize";
-
+import S from "sequelize";
 const sequelize = new Sequelize("sqlite::memory:");
 
-class Properties extends Model {}
+export class Properties extends S.Model {}
 
 Properties.init(
   {
@@ -54,4 +54,3 @@ Properties.init(
   },
   { sequelize, modelName: "Properties", tableName: "properties" }
 );
-export default Properties;

@@ -1,8 +1,7 @@
-import { Sequelize, DataTypes, Model, INTEGER } from "sequelize";
+import { DataTypes, Model } from "sequelize";
+import db from "../database";
 
-const sequelize = new Sequelize("sqlite::memory:");
-
-class Users extends Model {}
+export class Users extends Model {}
 
 Users.init(
   {
@@ -37,9 +36,8 @@ Users.init(
     },
   },
   {
-    sequelize,
-    modelName: "User",
+    sequelize: db,
+    modelName: "user",
     tableName: "users",
   }
 );
-export default Users;
