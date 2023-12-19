@@ -11,6 +11,11 @@ export class Users extends Model {
   public password!: string;
   public photo!: string;
   public salt!: string;
+
+  async validatePassword(password: string): Promise<boolean> {
+    const hash = await bcrypt.hash(password, this.salt);
+    return hash === this.password;
+  }
 }
 
 Users.init(
