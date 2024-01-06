@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../database";
-import bcrypt from "bcrypt";
+import bcrypt, { hashSync } from "bcrypt";
 
 export class Users extends Model {
   public id!: number;
@@ -14,7 +14,11 @@ export class Users extends Model {
 
   async validatePassword(password: string): Promise<boolean> {
     const hash = await bcrypt.hash(password, this.salt);
-    return hash === this.password;
+    console.log("hash: ", hash);
+    console.log("this.password: ", this.password);
+    hash == this.password ? console.log(true) : console.log(false);
+    // esto funciona el problema es que la promesa devuelve siempre falso.
+    return hash == this.password;
   }
 }
 
