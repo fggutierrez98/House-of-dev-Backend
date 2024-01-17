@@ -7,7 +7,7 @@ export class Users extends Model {
   public is_admin!: boolean;
   public first_name!: string;
   public last_name!: string;
-  public gmail!: string;
+  public email!: string;
   public password!: string;
   public photo!: string;
   public salt!: string;
@@ -41,7 +41,7 @@ Users.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gmail: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
