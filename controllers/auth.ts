@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { validateToken } from "../config/tokens";
+import { User } from "../types/types.md";
 
 export const validateCookie = async (
   req: Request,
@@ -12,7 +13,9 @@ export const validateCookie = async (
       return res.status(401).send(console.error("Token does not validate "));
     }
     const payload = validateToken(token);
-    req.user = payload;
+    typeof payload === "string"
+      ? console.log("PAYLOAD ES UN STRING, error en back archivo auth")
+      : (req.user = payload as User);
 
     next();
   } catch (error) {

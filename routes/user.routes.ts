@@ -9,9 +9,9 @@ userRoute.post("/logout", (req, res) => {
 });
 
 userRoute.post("/login", (req, res) => {
-  const { gmail, password } = req.body;
+  const { email, password } = req.body;
 
-  Users.findOne({ where: { gmail } })
+  Users.findOne({ where: { email } })
     .then(async (user) => {
       if (!user) return res.sendStatus(401);
       if (!(await user.validatePassword(password))) return res.sendStatus(401);
@@ -26,15 +26,17 @@ userRoute.post("/login", (req, res) => {
 });
 
 userRoute.post("/register", (req, res) => {
-  const { first_name, last_name, gmail, password, photo } = req.body;
+  const { first_name, last_name, email, password } = req.body;
   Users.create({
     first_name,
     last_name,
-    gmail,
+    email,
     password,
-    photo,
   })
-    .then((user) => res.send(user))
+    .then((user) => {
+      console.log(user);
+      res.send(user);
+    })
     .catch((error) => error);
 });
 

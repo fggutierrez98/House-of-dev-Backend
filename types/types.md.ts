@@ -3,6 +3,6 @@ export interface User {
   is_admin: boolean;
   first_name: string;
   last_name: string;
-  gmail: string;
+  email: string;
   photo: string;
 }
